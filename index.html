@@ -3,582 +3,929 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PintAma | Pintura y Reformas en Asturias</title>
+<title>PintAma | Inicio</title>
 <link rel="icon" type="image/x-icon" href="Icono/PintAmaIcono.ico">
 <link rel="shortcut icon" href="Icono/PintAmaIcono.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --blue: #1a4fad;
-  --blue-mid: #2c6df2;
-  --blue-light: #e8f0ff;
-  --gold: #c9922a;
-  --gold-light: #f5e6cc;
-  --dark: #0d1e35;
-  --body-bg: #f4f6fb;
+  --blue: #2c6df2;
+  --blue-dark: #10233f;
+  --gold: #e1b26f;
+  --bg: #f5f7fb;
   --surface: #ffffff;
-  --text: #0d1e35;
-  --muted: #536278;
+  --text: #10233f;
+  --muted: #5f6f89;
   --line: #dce6f5;
-  --radius: 18px;
-  --shadow: 0 12px 32px rgba(13,30,53,.10);
-  --shadow-lg: 0 20px 48px rgba(13,30,53,.15);
+  --shadow-soft: 0 14px 30px rgba(16, 35, 63, 0.08);
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans','Segoe UI',sans-serif;color:var(--text);background:var(--body-bg);overflow-x:hidden}
-img{max-width:100%;display:block}
-a{color:inherit}
 
-/* Topbar */
-.topbar{position:sticky;top:0;z-index:50;padding:12px 20px 0}
-.topbar-inner{background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border:1px solid #e2eaf8;border-radius:14px;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px}
-.topbar-brand{display:flex;align-items:center;gap:9px}
-.topbar-logo{width:34px;height:34px;border-radius:9px;object-fit:contain;background:linear-gradient(145deg,rgba(44,109,242,.14),rgba(201,146,42,.14));padding:4px}
-.topbar-name{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:700;letter-spacing:.01em}
-.topbar-name .pint{color:var(--blue-mid)}
-.topbar-name .ama{color:var(--gold)}
-.topbar-tabs{display:flex;gap:6px;flex-wrap:wrap}
-.topbar-tab{text-decoration:none;color:#3c4f6d;font-weight:700;border:1px solid transparent;border-radius:9px;min-height:36px;padding:7px 12px;display:inline-flex;align-items:center;transition:background .15s,border-color .15s}
-.topbar-tab:hover{border-color:var(--line);background:#f7faff}
-.topbar-tab.active{background:#ecf3ff;border-color:#c7d9fb;color:var(--dark)}
-
-/* WhatsApp flotante */
-.wa-fab{position:fixed;bottom:20px;right:16px;z-index:60;width:54px;height:54px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(37,211,102,.45);text-decoration:none;transition:transform .2s,box-shadow .2s}
-.wa-fab:hover{transform:scale(1.09);box-shadow:0 12px 28px rgba(37,211,102,.55)}
-.wa-fab svg{width:28px;height:28px;fill:#fff}
-.tel-pill{display:none;position:fixed;bottom:82px;right:16px;z-index:60;background:var(--blue-mid);color:#fff;border-radius:50px;padding:10px 16px;font-weight:700;text-decoration:none;box-shadow:0 8px 20px rgba(44,109,242,.4);font-size:.9rem}
-
-/* Page */
-.page{width:100%;padding:24px clamp(14px,2.8vw,30px) 60px;display:grid;gap:28px}
-.card{background:var(--surface);border:1px solid #e4edf8;border-radius:var(--radius);box-shadow:var(--shadow)}
-
-/* Hero */
-.hero{background:linear-gradient(150deg,#0d1e35 0%,#1a3a72 60%,#0f2952 100%);color:#fff;padding:clamp(36px,6vw,64px) clamp(20px,4vw,48px);display:grid;place-items:center;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 20% 50%,rgba(44,109,242,.18) 0%,transparent 70%),radial-gradient(ellipse 50% 50% at 80% 20%,rgba(201,146,42,.12) 0%,transparent 70%)}
-.hero-inner{position:relative;z-index:1}
-.hero-logo{width:clamp(72px,10vw,110px);border-radius:18px;background:rgba(255,255,255,.08);padding:8px;margin:0 auto 18px}
-.hero-title{font-family:'Fraunces',serif;font-size:clamp(2.2rem,6vw,3.8rem);font-weight:700;line-height:1.06;letter-spacing:.01em}
-.hero-title .pint{color:#7baeff}
-.hero-title .ama{color:#f0c06a}
-.hero-tagline{margin:10px auto 0;max-width:560px;color:#a8c0e8;font-size:clamp(1rem,2vw,1.15rem);font-family:'Fraunces',serif;font-style:italic;font-weight:300}
-.hero-cta{margin-top:26px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.btn{display:inline-flex;align-items:center;gap:6px;border-radius:10px;font-weight:700;cursor:pointer;text-decoration:none;border:0;font-family:inherit;padding:12px 20px;font-size:.97rem;transition:transform .18s,box-shadow .18s}
-.btn:hover{transform:translateY(-2px)}
-.btn-gold{background:linear-gradient(135deg,#d4962c,#f0c06a);color:var(--dark);box-shadow:0 10px 24px rgba(201,146,42,.35)}
-.btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25)}
-.hero-tel{margin-top:18px;color:rgba(255,255,255,.65);font-size:.92rem}
-.hero-tel a{color:#fff;font-weight:700;text-decoration:none;font-size:1.08rem}
-
-/* Sec head */
-.sec-head{margin-bottom:18px}
-.sec-title{font-family:'Fraunces',serif;font-size:clamp(1.3rem,3vw,1.75rem);color:var(--dark);font-weight:700}
-.sec-sub{margin-top:6px;color:var(--muted)}
-
-/* Servicios */
-.services-section{padding:clamp(22px,3.5vw,36px)}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
-.srv-card{border:1px solid var(--line);border-radius:14px;background:#f9fbff;padding:20px 16px;display:flex;flex-direction:column;align-items:flex-start;gap:10px;transition:transform .18s,box-shadow .18s,border-color .18s}
-.srv-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:#b7c9e8}
-.srv-icon{width:48px;height:48px;border-radius:12px;background:linear-gradient(145deg,#edf4ff,#fff5e4);display:grid;place-items:center;color:var(--blue-mid);flex-shrink:0}
-.srv-icon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.srv-name{font-weight:700;color:var(--dark);font-size:.97rem}
-.srv-desc{color:var(--muted);font-size:.86rem;line-height:1.45}
-
-/* Sobre nosotros */
-.about-section{padding:clamp(22px,3.5vw,36px);background:linear-gradient(145deg,#0d1e35,#1a3a72);color:#fff;border-color:#1a3a72}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
-.about-img-wrap{border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:rgba(255,255,255,.06);display:grid;place-items:center;border:1px solid rgba(255,255,255,.12)}
-.about-img-wrap img{width:100%;height:100%;object-fit:cover}
-.about-img-placeholder{display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(255,255,255,.35);font-size:.85rem;text-align:center;padding:20px}
-.about-img-placeholder svg{width:48px;height:48px;opacity:.4;fill:none;stroke:currentColor;stroke-width:1.5}
-.about-text .sec-title{color:#fff}
-.about-text .sec-sub{color:rgba(255,255,255,.65)}
-.about-body{margin-top:12px;color:rgba(255,255,255,.8);line-height:1.65}
-.about-stats{margin-top:22px;display:flex;gap:28px;flex-wrap:wrap}
-.stat-num{font-family:'Fraunces',serif;font-size:2.1rem;font-weight:700;color:#f0c06a;line-height:1}
-.stat-label{font-size:.82rem;color:rgba(255,255,255,.5);margin-top:3px}
-
-/* Cobertura */
-.coverage-section{padding:clamp(22px,3.5vw,36px)}
-.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:16px}
-.cov-pill{background:var(--blue-light);border:1px solid #c5d8f7;border-radius:50px;padding:10px 14px;display:flex;align-items:center;gap:8px;font-weight:600;font-size:.9rem;color:var(--blue)}
-.cov-pill svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;flex-shrink:0}
-.coverage-note{margin-top:12px;color:var(--muted);font-size:.88rem}
-
-/* Galería */
-.gallery-section{padding:clamp(22px,3.5vw,36px)}
-.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:16px}
-.gallery-item{border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#dce8ff;box-shadow:var(--shadow)}
-.gallery-item img{width:100%;aspect-ratio:4/3;object-fit:cover;cursor:zoom-in;transition:transform .22s}
-.gallery-item:hover img{transform:scale(1.04)}
-.gallery-empty{grid-column:1/-1;text-align:center;padding:40px 20px;color:var(--muted);font-size:.9rem}
-.gallery-empty svg{width:44px;height:44px;margin:0 auto 10px;opacity:.3;fill:none;stroke:currentColor;stroke-width:1.5}
-
-/* Testimonios */
-.reviews-section{padding:clamp(22px,3.5vw,36px)}
-.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:16px}
-.review-card{border:1px solid var(--line);border-radius:14px;background:#f9fbff;padding:20px;display:flex;flex-direction:column;gap:12px}
-.review-stars{color:#d4962c;font-size:1.1rem;letter-spacing:2px}
-.review-text{color:#334a68;font-size:.94rem;line-height:1.6;font-family:'Fraunces',serif;font-style:italic;font-weight:300}
-.review-author{display:flex;align-items:center;gap:10px;margin-top:auto}
-.review-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#c7d9fb,#e8f0ff);display:grid;place-items:center;font-weight:700;color:var(--blue-mid);font-size:.95rem;flex-shrink:0}
-.review-name{font-weight:700;font-size:.9rem}
-.review-city{font-size:.8rem;color:var(--muted)}
-
-/* Formulario */
-.quote-section{padding:clamp(22px,3.5vw,36px);background:linear-gradient(180deg,rgba(44,109,242,.07) 0%,rgba(255,255,255,0) 60%);border-color:#c7d8f7}
-.quote-form{margin-top:16px;display:grid;gap:14px}
-.quote-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.field{display:grid;gap:5px}
-.field-full,.field-wide{grid-column:1/-1}
-.field span{font-size:.87rem;font-weight:700;color:#3d5270}
-.field input,.field textarea,.field select{width:100%;border:1px solid #d3dff0;border-radius:10px;background:#f8fbff;color:#1a2e4a;font:inherit;padding:10px 12px;outline:none;transition:border-color .15s,box-shadow .15s}
-.field input:focus,.field textarea:focus,.field select:focus{border-color:#88b2ff;box-shadow:0 0 0 3px rgba(44,109,242,.13)}
-.field textarea{min-height:120px;resize:vertical}
-.items-editor{border:1px solid #d3dff0;border-radius:12px;background:#fff;overflow:hidden}
-.items-head,.item-row{display:grid;grid-template-columns:1.2fr 2fr .75fr .75fr 1.4fr auto;gap:8px;padding:10px;align-items:center}
-.items-head{background:#f2f7ff;border-bottom:1px solid #d3dff0;color:#415675;font-size:.82rem;font-weight:700}
-.item-row{border-bottom:1px solid #eef3fb}
-.item-row:last-child{border-bottom:0}
-.item-row input,.item-row select{width:100%;border:1px solid #d3dff0;border-radius:8px;background:#f8fbff;color:#1a2e4a;padding:7px 9px;font:inherit}
-.item-remove{min-height:34px;min-width:34px;border:1px solid #f5c5c2;border-radius:8px;background:#fff4f3;color:#b42318;font-weight:700;cursor:pointer}
-.add-item-btn{min-height:38px;border:1px dashed #a4bde8;border-radius:9px;background:#eef4ff;color:var(--dark);font-weight:700;padding:8px 12px;cursor:pointer;font:inherit}
-.items-help{color:var(--muted);font-size:.83rem;margin-top:4px}
-.file-help{color:var(--muted);font-size:.84rem}
-.photo-list{display:grid;gap:6px}
-.photo-item{border:1px solid #dbe6f5;border-radius:8px;background:#f8fbff;padding:7px 10px;color:#3f5675;font-size:.85rem}
-.quote-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
-.quote-btn{border:0;border-radius:10px;min-height:44px;padding:10px 18px;font-weight:700;cursor:pointer;font:inherit}
-.quote-btn.primary{background:linear-gradient(135deg,var(--blue-mid),#3d8eff);color:#fff;box-shadow:0 10px 20px rgba(44,109,242,.25)}
-.quote-btn.whatsapp{background:linear-gradient(135deg,#0f9d58,#17b26a);color:#fff;box-shadow:0 10px 20px rgba(15,157,88,.22)}
-.quote-note{color:var(--muted);font-size:.86rem}
-.quote-note.error{color:#b42318}
-.quote-note.success{color:#027a48}
-
-/* Contacto */
-.contact-section{padding:clamp(22px,3.5vw,36px);text-align:center}
-.contact-title{font-family:'Fraunces',serif;font-size:clamp(1.3rem,3vw,1.75rem);color:var(--dark)}
-.contact-text{margin:8px auto 0;color:var(--muted);max-width:680px}
-.response-badge{display:inline-flex;align-items:center;gap:6px;background:#e8f7ef;border:1px solid #b6e6cc;border-radius:50px;padding:6px 14px;color:#0a6640;font-weight:700;font-size:.86rem;margin-top:12px}
-.contact-grid{margin-top:18px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.contact-box{min-height:50px;border-radius:10px;border:1px solid var(--line);background:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;padding:10px;text-align:center}
-.contact-action{min-height:50px;border-radius:10px;border:1px solid transparent;display:flex;align-items:center;justify-content:center;font-weight:700;padding:10px;text-align:center;text-decoration:none}
-.contact-action.email{background:linear-gradient(135deg,var(--blue-mid),#3d8eff);color:#fff;box-shadow:0 10px 20px rgba(44,109,242,.25)}
-.contact-action.wa{background:linear-gradient(135deg,#0f9d58,#17b26a);color:#fff;box-shadow:0 10px 20px rgba(15,157,88,.22)}
-.footer-note{margin-top:14px;color:var(--muted);font-size:.85rem}
-
-/* Lightbox */
-.lightbox{position:fixed;inset:0;z-index:90;background:rgba(5,12,26,.9);display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .17s,visibility .17s;padding:16px}
-.lightbox.is-open{opacity:1;visibility:visible}
-.lightbox-panel{position:relative;width:min(1280px,100%);max-height:92vh;display:grid;place-items:center}
-.lightbox-close{position:absolute;top:-10px;right:0;border:0;background:transparent;color:#fff;font-size:2rem;line-height:1;cursor:pointer}
-.lightbox-image{max-width:100%;max-height:90vh;border-radius:12px;box-shadow:0 24px 48px rgba(0,0,0,.5);object-fit:contain}
-body.modal-open{overflow:hidden}
-.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-
-@media(max-width:820px){
-  .about-grid{grid-template-columns:1fr}
-  .about-img-wrap{aspect-ratio:16/9}
-  .tel-pill{display:flex}
+* {
+  box-sizing: border-box;
 }
-@media(max-width:680px){
-  .contact-grid,.quote-grid{grid-template-columns:1fr}
-  .quote-btn{width:100%;text-align:center}
-  .items-head{display:none}
-  .item-row{grid-template-columns:1fr;gap:7px;padding:10px;background:#fbfdff}
-  .hero-cta .btn{width:100%;justify-content:center}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1100px 520px at 10% -10%, #edf3ff 0%, rgba(237, 243, 255, 0) 60%),
+    radial-gradient(1200px 580px at 90% 0%, #eefaf5 0%, rgba(238, 250, 245, 0) 58%),
+    var(--bg);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  padding: clamp(12px, 2.2vw, 18px) clamp(16px, 3vw, 28px) 0;
+}
+
+.topbar-inner {
+  min-height: 62px;
+  border-radius: 14px;
+  border: 1px solid #e6edf9;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+}
+
+.topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.topbar-logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  object-fit: contain;
+  background: linear-gradient(145deg, rgba(44, 109, 242, 0.14), rgba(225, 178, 111, 0.14));
+  padding: 4px;
+}
+
+.topbar-name {
+  margin: 0;
+  font-family: "Sora", "Inter", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.topbar-name .pint {
+  color: var(--blue);
+}
+
+.topbar-name .ama {
+  color: var(--gold);
+}
+
+.topbar-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.topbar-tab {
+  text-decoration: none;
+  color: #3c4f6d;
+  font-weight: 700;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  min-height: 38px;
+  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.topbar-tab:hover {
+  border-color: var(--line);
+  background: #f7faff;
+}
+
+.topbar-tab.active {
+  background: #ecf3ff;
+  border-color: #c7d9fb;
+  color: var(--blue-dark);
+}
+
+.page {
+  width: 100%;
+  min-height: calc(100vh - 82px);
+  padding: clamp(16px, 3vw, 28px);
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: clamp(18px, 3vw, 28px);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid #e6edf9;
+  border-radius: 18px;
+  box-shadow: var(--shadow-soft);
+}
+
+.hero {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: clamp(28px, 5vw, 54px) clamp(18px, 3vw, 28px);
+}
+
+.brand {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: clamp(88px, 12vw, 130px);
+  border-radius: 16px;
+  background: linear-gradient(145deg, rgba(44, 109, 242, 0.14), rgba(225, 178, 111, 0.14));
+  padding: 8px;
+}
+
+.brand-name {
+  margin: 0;
+  font-family: "Sora", "Inter", sans-serif;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: 0.02em;
+}
+
+.brand-name .pint {
+  color: var(--blue);
+}
+
+.brand-name .ama {
+  color: var(--gold);
+}
+
+.brand-subtitle {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: clamp(0.96rem, 2vw, 1.08rem);
+}
+
+.gallery-section {
+  padding: clamp(18px, 3vw, 24px);
+}
+
+.section-title {
+  margin: 0;
+  font-family: "Sora", "Inter", sans-serif;
+  color: var(--blue-dark);
+  font-size: clamp(1.2rem, 2.6vw, 1.55rem);
+}
+
+.section-subtitle {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.gallery-grid {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.gallery-item {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #e8f0ff;
+  box-shadow: var(--shadow-soft);
+}
+
+.gallery-item img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  cursor: zoom-in;
+  transition: transform 180ms ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.02);
+}
+
+.quote-section {
+  padding: clamp(18px, 3vw, 24px);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(44, 109, 242, 0.12) 0%,
+      rgba(44, 109, 242, 0.06) 44%,
+      rgba(255, 255, 255, 0.98) 100%
+    );
+  border-color: #c7d8f7;
+  box-shadow: 0 16px 34px rgba(35, 78, 157, 0.14);
+}
+
+.quote-form {
+  margin-top: 14px;
+  display: grid;
+  gap: 12px;
+}
+
+.quote-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field-full {
+  grid-column: 1 / -1;
+}
+
+.field-wide {
+  grid-column: span 2;
+}
+
+.field span {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #405674;
+}
+
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  border: 1px solid #d7e2f2;
+  border-radius: 10px;
+  background: #f8fbff;
+  color: #1e304e;
+  font: inherit;
+  padding: 10px 12px;
+  outline: none;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  border-color: #8bb3ff;
+  box-shadow: 0 0 0 3px rgba(44, 109, 242, 0.14);
+}
+
+.field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.file-help {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.photo-list {
+  display: grid;
+  gap: 8px;
+}
+
+.photo-item {
+  border: 1px solid #dbe6f5;
+  border-radius: 9px;
+  background: #f8fbff;
+  padding: 8px 10px;
+  color: #3f5675;
+  font-size: 0.86rem;
+}
+
+.quote-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.quote-btn {
+  border: 0;
+  border-radius: 10px;
+  min-height: 44px;
+  padding: 10px 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.quote-btn.primary {
+  background: linear-gradient(135deg, var(--blue), #3d8eff);
+  color: #ffffff;
+  box-shadow: 0 12px 20px rgba(44, 109, 242, 0.25);
+}
+
+.quote-btn.whatsapp {
+  background: linear-gradient(135deg, #0f9d58, #17b26a);
+  color: #ffffff;
+  box-shadow: 0 12px 20px rgba(15, 157, 88, 0.23);
+}
+
+.quote-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.quote-note.error {
+  color: #b42318;
+}
+
+.quote-note.success {
+  color: #027a48;
+}
+
+.items-editor {
+  border: 1px solid #d7e2f2;
+  border-radius: 12px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.items-head,
+.item-row {
+  display: grid;
+  grid-template-columns: 1.2fr 2fr 0.75fr 0.75fr 1.4fr auto;
+  gap: 8px;
+  padding: 10px;
+  align-items: center;
+}
+
+.items-head {
+  background: #f4f8ff;
+  border-bottom: 1px solid #d7e2f2;
+  color: #415675;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.item-row {
+  border-bottom: 1px solid #eef3fb;
+}
+
+.item-row:last-child {
+  border-bottom: 0;
+}
+
+.item-row input,
+.item-row select {
+  width: 100%;
+  border: 1px solid #d7e2f2;
+  border-radius: 9px;
+  background: #f8fbff;
+  color: #1e304e;
+  padding: 8px 10px;
+  font: inherit;
+}
+
+.item-remove {
+  min-height: 36px;
+  min-width: 36px;
+  border: 1px solid #f5c5c2;
+  border-radius: 8px;
+  background: #fff4f3;
+  color: #b42318;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.item-actions {
+  margin-top: 8px;
+}
+
+.add-item-btn {
+  min-height: 38px;
+  border: 1px dashed #a4bde8;
+  border-radius: 9px;
+  background: #eef4ff;
+  color: var(--blue-dark);
+  font-weight: 700;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.items-help {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.83rem;
+}
+
+.contact-section {
+  padding: clamp(20px, 3vw, 30px);
+  text-align: center;
+}
+
+.contact-title {
+  margin: 0;
+  font-family: "Sora", "Inter", sans-serif;
+  color: var(--blue-dark);
+  font-size: clamp(1.25rem, 2.8vw, 1.7rem);
+}
+
+.contact-text {
+  margin: 10px auto 0;
+  color: var(--muted);
+  max-width: 760px;
+}
+
+.contact-grid {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.contact-box,
+.contact-action {
+  min-height: 52px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px 12px;
+  font-weight: 600;
+}
+
+.contact-action {
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--blue), #3d8eff);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 12px 20px rgba(44, 109, 242, 0.26);
+}
+
+.footer-note {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(7, 16, 32, 0.88);
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 170ms ease, visibility 170ms ease;
+  padding: 16px;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-panel {
+  position: relative;
+  width: min(1300px, 100%);
+  max-height: 92vh;
+  display: grid;
+  place-items: center;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -8px;
+  right: 0;
+  border: 0;
+  background: transparent;
+  color: #ffffff;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 12px;
+  box-shadow: 0 26px 46px rgba(0, 0, 0, 0.45);
+  object-fit: contain;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 700px) {
+  .topbar-inner {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .topbar-tabs {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quote-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quote-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .items-head {
+    display: none;
+  }
+
+  .item-row {
+    grid-template-columns: 1fr;
+    gap: 7px;
+    padding: 10px;
+    background: #fbfdff;
+  }
 }
 </style>
 </head>
 <body>
-
 <header class="topbar">
   <div class="topbar-inner">
     <div class="topbar-brand" aria-label="PintAma">
       <img src="PintAma_LogoColor.png" class="topbar-logo" alt="Logo PintAma" onerror="this.style.display='none'">
       <p class="topbar-name"><span class="pint">Pint</span><span class="ama">Ama</span></p>
     </div>
-    <nav class="topbar-tabs" aria-label="Navegación">
+    <nav class="topbar-tabs" aria-label="Navegación principal">
       <a class="topbar-tab active" href="index.html">Inicio</a>
       <a class="topbar-tab" href="app.html">Programa</a>
     </nav>
   </div>
 </header>
 
-<!-- WhatsApp flotante -->
-<a class="wa-fab" href="https://wa.me/34631422335" target="_blank" rel="noopener" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-<a class="tel-pill" href="tel:+34631422335">📞 631 422 335</a>
-
 <main class="page">
-
-  <!-- Hero -->
-  <section class="card hero" aria-label="Inicio">
-    <div class="hero-inner">
-      <img src="PintAma_LogoColor.png" class="hero-logo" alt="Logo PintAma" onerror="this.style.display='none'">
-      <h1 class="hero-title"><span class="pint">Pint</span><span class="ama">Ama</span></h1>
-      <p class="hero-tagline">Pintura y reformas con acabados de calidad en Asturias</p>
-      <div class="hero-cta">
-        <a class="btn btn-gold" href="#solicitud">Pedir presupuesto gratis</a>
-        <a class="btn btn-ghost" href="#galeria">Ver trabajos</a>
-      </div>
-      <p class="hero-tel">O llámanos: <a href="tel:+34631422335">+34 631 422 335</a></p>
+  <section class="card hero" aria-label="Inicio PintAma">
+    <div class="brand">
+      <img src="PintAma_LogoColor.png" class="logo" alt="Logo PintAma" onerror="this.style.display='none'">
+      <h1 class="brand-name"><span class="pint">Pint</span><span class="ama">Ama</span></h1>
+      <p class="brand-subtitle">presupuestos y reformas</p>
     </div>
   </section>
 
-  <!-- Servicios -->
-  <section class="card services-section" aria-labelledby="srvTitle">
-    <div class="sec-head">
-      <h2 class="sec-title" id="srvTitle">¿Qué hacemos?</h2>
-      <p class="sec-sub">Servicios de pintura y reforma para particulares, comunidades y empresas en Asturias.</p>
-    </div>
-    <div class="services-grid">
-      <div class="srv-card">
-        <div class="srv-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-        <span class="srv-name">Pintura interior</span>
-        <span class="srv-desc">Paredes, techos, carpintería interior y esmaltes con acabados impecables.</span>
-      </div>
-      <div class="srv-card">
-        <div class="srv-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-        <span class="srv-name">Pintura exterior</span>
-        <span class="srv-desc">Fachadas, zócalos, impermeabilizantes y pintura térmica.</span>
-      </div>
-      <div class="srv-card">
-        <div class="srv-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-        <span class="srv-name">Comunidades</span>
-        <span class="srv-desc">Portales, zonas comunes, garajes y señalización.</span>
-      </div>
-      <div class="srv-card">
-        <div class="srv-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
-        <span class="srv-name">Reformas generales</span>
-        <span class="srv-desc">Pladur, alicatado, suelos, falsos techos y revestimientos.</span>
-      </div>
-      <div class="srv-card">
-        <div class="srv-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <span class="srv-name">Tratamientos especiales</span>
-        <span class="srv-desc">Antigraffiti, epoxi industrial, microcemento y pinturas ignífugas.</span>
-      </div>
-      <div class="srv-card">
-        <div class="srv-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg></div>
-        <span class="srv-name">Asesoramiento</span>
-        <span class="srv-desc">Te ayudamos a elegir materiales, colores y la mejor solución para tu proyecto.</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sobre nosotros -->
-  <section class="card about-section" aria-labelledby="aboutTitle">
-    <div class="about-grid">
-      <div class="about-img-wrap">
-        <img src="img_team/equipo.jpg" alt="Equipo PintAma"
-          onerror="this.parentElement.innerHTML='<div class=\'about-img-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><polyline points=\'21 15 16 10 5 21\'/></svg><span>Pon aquí una foto del equipo<br><code>img_team/equipo.jpg</code></span></div>'">
-      </div>
-      <div class="about-text">
-        <div class="sec-head">
-          <h2 class="sec-title" id="aboutTitle">Sobre nosotros</h2>
-          <p class="sec-sub">Pintores y reformistas con más de 15 años en Asturias</p>
-        </div>
-        <p class="about-body">Somos un equipo especializado en pintura y reformas con amplia experiencia en trabajos residenciales, comunidades de vecinos y locales comerciales. Trabajamos con materiales de primera calidad, cumpliendo plazos y cuidando cada detalle del acabado final.</p>
-        <p class="about-body">Nuestro compromiso es que cada trabajo quede como si fuera el nuestro propio. Por eso muchos clientes repiten y nos recomiendan.</p>
-        <div class="about-stats">
-          <div class="stat">
-            <div class="stat-num">+15</div>
-            <div class="stat-label">Años de experiencia</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">+500</div>
-            <div class="stat-label">Proyectos realizados</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">100%</div>
-            <div class="stat-label">Clientes satisfechos</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Cobertura -->
-  <section class="card coverage-section" aria-labelledby="covTitle">
-    <div class="sec-head">
-      <h2 class="sec-title" id="covTitle">¿Dónde trabajamos?</h2>
-      <p class="sec-sub">Cubrimos Gijón y la zona central de Asturias. Consulta si llegamos a tu municipio.</p>
-    </div>
-    <div class="coverage-grid">
-      <div class="cov-pill"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Gijón</div>
-      <div class="cov-pill"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Oviedo</div>
-      <div class="cov-pill"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Avilés</div>
-      <div class="cov-pill"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Siero</div>
-      <div class="cov-pill"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Langreo</div>
-      <div class="cov-pill"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Mieres</div>
-      <div class="cov-pill"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Villaviciosa</div>
-      <div class="cov-pill"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Carreño</div>
-    </div>
-    <p class="coverage-note">¿Tu municipio no aparece? Llámanos y lo consultamos sin compromiso.</p>
-  </section>
-
-  <!-- Galería -->
-  <section class="card gallery-section" id="galeria" aria-labelledby="galleryTitle">
-    <div class="sec-head">
-      <h2 class="sec-title" id="galleryTitle">Trabajos realizados</h2>
-      <p class="sec-sub">Fotos reales de proyectos terminados. Añade las tuyas en la carpeta <code>img_home/</code>.</p>
-    </div>
-    <div class="gallery-grid" id="galleryGrid">
-      <div class="gallery-empty">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        <p>Añade fotos en <code>img_home/</code> para que aparezcan aquí<br><small>Nómbralas: 1.jpg, 2.jpg, 3.jpg… (jpg, png o webp)</small></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonios -->
-  <section class="card reviews-section" aria-labelledby="reviewsTitle">
-    <div class="sec-head">
-      <h2 class="sec-title" id="reviewsTitle">Lo que dicen nuestros clientes</h2>
-      <p class="sec-sub">Opiniones reales de personas que confiaron en nosotros.</p>
-    </div>
-    <div class="reviews-grid">
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Pintaron todo el piso en dos días y quedó perfecto. Muy limpios, puntuales y el precio muy ajustado. Sin duda repito."</p>
-        <div class="review-author">
-          <div class="review-avatar">MG</div>
-          <div><div class="review-name">María G.</div><div class="review-city">Gijón · Pintura interior</div></div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Llevábamos años buscando alguien de confianza para la fachada de la comunidad. El resultado fue espectacular y el trato muy profesional."</p>
-        <div class="review-author">
-          <div class="review-avatar">CR</div>
-          <div><div class="review-name">Carlos R.</div><div class="review-city">Oviedo · Fachada comunidad</div></div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Reforma completa del local incluyendo pladur y suelo nuevo. Cumplieron los plazos y el acabado es de primera. Muy recomendables."</p>
-        <div class="review-author">
-          <div class="review-avatar">LP</div>
-          <div><div class="review-name">Laura P.</div><div class="review-city">Avilés · Reforma local</div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Formulario -->
   <section class="card quote-section" id="solicitud" aria-labelledby="quoteTitle">
-    <div class="sec-head">
-      <h2 class="sec-title" id="quoteTitle">Solicitud de presupuesto</h2>
-      <p class="sec-sub">Rellena el formulario, adjunta fotos si quieres y te respondemos en menos de 24h.</p>
-    </div>
+    <h2 class="section-title" id="quoteTitle">Solicitud de presupuesto</h2>
+    <p class="section-subtitle">Completa una versión simplificada del editor de documentos (sin precios), adjunta fotos y envía por Gmail o WhatsApp.</p>
+
     <form class="quote-form" id="quoteForm" novalidate>
       <div class="quote-grid">
-        <label class="field"><span>Nombre *</span><input type="text" id="clientName" required></label>
-        <label class="field"><span>Email *</span><input type="email" id="clientEmail" required></label>
-        <label class="field"><span>Teléfono *</span><input type="tel" id="clientPhone" required></label>
-        <label class="field"><span>Dirección del trabajo</span><input type="text" id="projectAddress"></label>
-        <label class="field"><span>Población</span><input type="text" id="projectCity"></label>
-        <label class="field"><span>Código postal</span><input type="text" id="projectZip"></label>
-        <label class="field"><span>Fecha estimada</span><input type="date" id="projectDate"></label>
+        <label class="field">
+          <span>Nombre *</span>
+          <input type="text" id="clientName" required>
+        </label>
+
+        <label class="field">
+          <span>Email *</span>
+          <input type="email" id="clientEmail" required>
+        </label>
+
+        <label class="field">
+          <span>Teléfono *</span>
+          <input type="tel" id="clientPhone" required>
+        </label>
+
+        <label class="field">
+          <span>Dirección del trabajo</span>
+          <input type="text" id="projectAddress">
+        </label>
+
+        <label class="field">
+          <span>Población</span>
+          <input type="text" id="projectCity">
+        </label>
+
+        <label class="field">
+          <span>Código postal</span>
+          <input type="text" id="projectZip">
+        </label>
+
+        <label class="field">
+          <span>Fecha estimada</span>
+          <input type="date" id="projectDate">
+        </label>
+
         <label class="field">
           <span>Tipo de inmueble</span>
           <select id="projectPropertyType">
             <option value="">No especificado</option>
-            <option>Piso</option><option>Casa</option><option>Local</option>
-            <option>Comunidad</option><option>Oficina</option>
-            <option>Nave industrial</option><option>Garaje</option>
+            <option value="Piso">Piso</option>
+            <option value="Casa">Casa</option>
+            <option value="Local">Local</option>
+            <option value="Comunidad">Comunidad</option>
+            <option value="Oficina">Oficina</option>
           </select>
         </label>
+
         <label class="field">
           <span>Prioridad</span>
           <select id="projectPriority">
-            <option value="">Normal</option><option>Urgente</option>
-            <option>Alta</option><option>Media</option><option>Baja</option>
+            <option value="">Normal</option>
+            <option value="Urgente">Urgente</option>
+            <option value="Alta">Alta</option>
+            <option value="Media">Media</option>
+            <option value="Baja">Baja</option>
           </select>
         </label>
+
         <label class="field field-wide">
           <span>Descripción general *</span>
-          <textarea id="projectDescription" placeholder="Describe el trabajo: qué hay que hacer, estado actual y objetivos..." required></textarea>
+          <textarea id="projectDescription" placeholder="Describe el trabajo de forma general: qué hay que hacer, estado actual y objetivos..." required></textarea>
         </label>
       </div>
 
       <div class="field">
-        <span>Tareas y partidas (sin precios)</span>
+        <span>Tareas extras y partidas (sin precios)</span>
         <div class="items-editor">
           <div class="items-head">
-            <div>Tipo de trabajo</div><div>Descripción</div>
-            <div>Cantidad</div><div>Unidad</div><div>Observaciones</div><div></div>
+            <div>Tipo de trabajo</div>
+            <div>Descripción</div>
+            <div>Cantidad</div>
+            <div>Unidad</div>
+            <div>Observaciones</div>
+            <div></div>
           </div>
           <div id="itemsContainer"></div>
         </div>
-        <div style="margin-top:8px"><button class="add-item-btn" id="addItemBtn" type="button">+ Añadir tarea</button></div>
-        <p class="items-help">Añade tantas tareas como necesites.</p>
+        <div class="item-actions">
+          <button class="add-item-btn" id="addItemBtn" type="button">+ Añadir tarea extra</button>
+        </div>
+        <p class="items-help">Añade tareas como en tu editor, pero sin importes ni totales.</p>
       </div>
 
       <div class="quote-grid">
-        <label class="field field-full"><span>Notas adicionales</span><textarea id="projectExtraNotes" placeholder="Accesos, horarios, restricciones..."></textarea></label>
-        <label class="field field-full"><span>Adjuntar fotos (JPG/PNG/WebP)</span><input type="file" id="projectPhotos" accept="image/*" multiple></label>
+        <label class="field field-full">
+          <span>Notas adicionales</span>
+          <textarea id="projectExtraNotes" placeholder="Notas adicionales del cliente (accesos, horarios, restricciones, etc.)"></textarea>
+        </label>
+
+        <label class="field field-full">
+          <span>Adjuntar fotos (JPG/PNG/WebP)</span>
+          <input type="file" id="projectPhotos" accept="image/*" multiple>
+        </label>
       </div>
 
-      <p class="file-help">Hasta 12 fotos · máximo 25 MB en total.</p>
+      <p class="file-help">Puedes adjuntar hasta 12 fotos (máximo total 25 MB).</p>
       <div class="photo-list" id="photoList"></div>
 
       <div class="quote-actions">
         <button class="quote-btn primary" id="sendGmailBtn" type="button">Enviar por Gmail</button>
         <button class="quote-btn whatsapp" id="sendWhatsappBtn" type="button">Enviar por WhatsApp</button>
       </div>
-      <p class="quote-note" id="quoteStatus">Al enviar se genera un archivo compatible para importar en PintAma.</p>
+
+      <p class="quote-note" id="quoteStatus">Al enviar, se genera automáticamente el archivo compatible para importarlo en PintAma.</p>
     </form>
   </section>
 
-  <!-- Contacto -->
-  <section class="card contact-section" aria-labelledby="contactTitle">
-    <h2 class="contact-title" id="contactTitle">¿Hablamos?</h2>
-    <p class="contact-text">Cuéntanos tu proyecto y te preparamos una propuesta rápida y sin compromiso.</p>
-    <div class="response-badge">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-      Respondemos en menos de 24h laborables
-    </div>
-    <div class="contact-grid">
-      <div class="contact-box"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5020393e24313d312235363f223d312310373d31393c7e333f3d">[email&#160;protected]</a></div>
-      <div class="contact-box">+34 631 422 335</div>
-      <a class="contact-action email" href="/cdn-cgi/l/email-protection#45352c2b312428243720232a37282436052228242c296b262a287a3630272f20263178062a312c3f24262c86f62b607775152c2b31042824" rel="noopener">Pedir cotización por email</a>
-      <a class="contact-action wa" href="https://wa.me/34631422335" target="_blank" rel="noopener">Pedir cotización por WhatsApp</a>
-    </div>
-    <p class="footer-note">Horario: L-V 9:00–18:00 · © 2026 PintAma Software</p>
+  <section class="card gallery-section" aria-labelledby="galleryTitle">
+    <h2 class="section-title" id="galleryTitle">Trabajos y reformas</h2>
+    <p class="section-subtitle">Imágenes reales de trabajos realizados.</p>
+    <div class="gallery-grid" id="galleryGrid"></div>
   </section>
 
+  <section class="card contact-section" aria-labelledby="contactTitle">
+    <h2 class="contact-title" id="contactTitle">Contactar para pedir cotización</h2>
+    <p class="contact-text">Cuéntanos qué necesitas y te respondemos con una propuesta rápida y personalizada.</p>
+
+    <div class="contact-grid">
+      <div class="contact-box">pintamareformas@gmail.com</div>
+      <div class="contact-box">+34 631 422 335</div>
+      <a class="contact-action" href="mailto:pintamareformas@gmail.com?subject=Cotizaci%C3%B3n%20PintAma" rel="noopener">Pedir cotización por email</a>
+      <a class="contact-action" href="https://wa.me/34631422335" target="_blank" rel="noopener">Pedir cotización por WhatsApp</a>
+    </div>
+
+    <p class="footer-note">Horario: L-V 9:00-18:00 · Respuesta en 24-48h laborables</p>
+  </section>
 </main>
 
-<!-- Lightbox -->
 <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
   <div class="lightbox-panel" role="document">
-    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Cerrar">×</button>
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Cerrar imagen">×</button>
     <h3 id="lightboxTitle" class="visually-hidden">Vista de imagen</h3>
     <img class="lightbox-image" id="lightboxImage" src="" alt="">
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/inicio.js"></script>
+<script src="js/inicio.js"></script>
 <script>
+// ── Tipos de trabajo (desplegable ampliado) ───────────────────────────────────
 const WORK_TYPES = [
   "",
-  "Pintura interior – paredes y techos","Pintura interior – esmalte carpintería",
-  "Pintura interior – barniz madera","Pintura interior – imprimación selladora",
-  "Pintura interior – gotelé / textura","Pintura interior – chalk paint / efecto envejecido",
-  "Pintura exterior – fachada","Pintura exterior – zócalo / revestimiento",
-  "Pintura exterior – impermeabilizante","Pintura exterior – pintura térmica / aislante",
+  // Pintura interior
+  "Pintura interior – paredes y techos",
+  "Pintura interior – esmalte carpintería",
+  "Pintura interior – barniz madera",
+  "Pintura interior – imprimación selladora",
+  "Pintura interior – gotelé / textura",
+  "Pintura interior – chalk paint / efecto envejecido",
+  // Pintura exterior
+  "Pintura exterior – fachada",
+  "Pintura exterior – zócalo / revestimiento",
+  "Pintura exterior – impermeabilizante",
+  "Pintura exterior – pintura térmica / aislante",
   "Pintura exterior – carpintería exterior",
-  "Preparación – lijado y saneado","Preparación – relleno de grietas y fisuras",
-  "Preparación – rasillado / enfoscado","Preparación – eliminación de humedades",
-  "Preparación – decapado / retirada pintura antigua","Preparación – imprimación anti-humedad",
-  "Reforma – demolición y derribo","Reforma – tabiquería pladur / cartón-yeso",
-  "Reforma – alicatado y solado","Reforma – suelo laminado o parquet",
-  "Reforma – falso techo","Reforma – revestimiento de escaleras",
-  "Comunidad – pintura portal y zonas comunes","Comunidad – pintura garaje / parking",
+  // Preparación de superficies
+  "Preparación – lijado y saneado",
+  "Preparación – relleno de grietas y fisuras",
+  "Preparación – rasillado / enfoscado",
+  "Preparación – eliminación de humedades",
+  "Preparación – decapado / retirada pintura antigua",
+  "Preparación – imprimación anti-humedad",
+  // Reformas generales
+  "Reforma – demolición y derribo",
+  "Reforma – tabiquería pladur / cartón-yeso",
+  "Reforma – alicatado y solado",
+  "Reforma – instalación de suelo laminado o parquet",
+  "Reforma – falso techo",
+  "Reforma – revestimiento de escaleras",
+  // Comunidades y exteriores
+  "Comunidad – pintura portal y zonas comunes",
+  "Comunidad – pintura garaje / parking",
   "Comunidad – señalización y marcas viales",
-  "Especial – pintura antigraffiti","Especial – pintura ignífuga / cortafuego",
-  "Especial – pintura epoxi suelos industriales","Especial – pintura piscina",
+  // Trabajos especiales
+  "Especial – pintura antigraffiti",
+  "Especial – pintura ignífuga / cortafuego",
+  "Especial – pintura epoxi suelos industriales",
+  "Especial – pintura piscina",
+  "Especial – rotulación y decoración",
   "Especial – efecto microcemento",
-  "Otro – limpieza final de obra","Otro – reparaciones varias","Otro – a definir / presupuestar"
+  // Otros
+  "Otro – limpieza final de obra",
+  "Otro – reparaciones varias",
+  "Otro – a definir / presupuestar"
 ];
 
+// ── Sobreescribir creación de filas ──────────────────────────────────────────
 window.addEventListener('DOMContentLoaded', () => {
-
-  // Filas de partidas
-  const addBtn    = document.getElementById('addItemBtn');
+  const addBtn = document.getElementById('addItemBtn');
   const container = document.getElementById('itemsContainer');
 
   function createRow() {
     const row = document.createElement('div');
     row.className = 'item-row';
+
+    // Tipo de trabajo (select)
     const sel = document.createElement('select');
-    sel.setAttribute('aria-label','Tipo de trabajo');
+    sel.setAttribute('aria-label', 'Tipo de trabajo');
     WORK_TYPES.forEach(t => {
-      const o = document.createElement('option');
-      o.value = t; o.textContent = t === "" ? "— Selecciona —" : t;
-      sel.appendChild(o);
+      const opt = document.createElement('option');
+      opt.value = t;
+      opt.textContent = t === "" ? "— Selecciona —" : t;
+      sel.appendChild(opt);
     });
+
+    // Descripción
     const desc = document.createElement('input');
-    desc.type='text'; desc.placeholder='Descripción'; desc.setAttribute('aria-label','Descripción');
+    desc.type = 'text';
+    desc.placeholder = 'Descripción';
+    desc.setAttribute('aria-label', 'Descripción');
+
+    // Cantidad
     const qty = document.createElement('input');
-    qty.type='number'; qty.min='0'; qty.placeholder='0'; qty.setAttribute('aria-label','Cantidad');
+    qty.type = 'number';
+    qty.min = '0';
+    qty.placeholder = '0';
+    qty.setAttribute('aria-label', 'Cantidad');
+
+    // Unidad
     const unit = document.createElement('select');
-    unit.setAttribute('aria-label','Unidad');
+    unit.setAttribute('aria-label', 'Unidad');
     ['m²','m lineal','m³','ud','h','kg','l','global'].forEach(u => {
-      const o=document.createElement('option'); o.value=u; o.textContent=u; unit.appendChild(o);
+      const o = document.createElement('option');
+      o.value = u; o.textContent = u;
+      unit.appendChild(o);
     });
+
+    // Observaciones
     const obs = document.createElement('input');
-    obs.type='text'; obs.placeholder='Observaciones'; obs.setAttribute('aria-label','Observaciones');
+    obs.type = 'text';
+    obs.placeholder = 'Observaciones';
+    obs.setAttribute('aria-label', 'Observaciones');
+
+    // Eliminar
     const del = document.createElement('button');
-    del.type='button'; del.className='item-remove'; del.textContent='✕';
-    del.addEventListener('click',()=>row.remove());
-    row.append(sel,desc,qty,unit,obs,del);
+    del.type = 'button';
+    del.className = 'item-remove';
+    del.textContent = '✕';
+    del.setAttribute('aria-label', 'Eliminar fila');
+    del.addEventListener('click', () => row.remove());
+
+    row.append(sel, desc, qty, unit, obs, del);
     return row;
   }
 
   if (addBtn && container) {
-    const nb = addBtn.cloneNode(true);
-    addBtn.parentNode.replaceChild(nb, addBtn);
-    nb.addEventListener('click', () => container.appendChild(createRow()));
+    // Reemplazar el listener original clonando el botón
+    const newBtn = addBtn.cloneNode(true);
+    addBtn.parentNode.replaceChild(newBtn, addBtn);
+    newBtn.addEventListener('click', () => container.appendChild(createRow()));
+    // Añadir una fila inicial
     container.appendChild(createRow());
   }
 
-  // Fotos
-  const photosInput = document.getElementById('projectPhotos');
-  const photoList   = document.getElementById('photoList');
-  if (photosInput && photoList) {
-    photosInput.addEventListener('change', () => {
-      photoList.innerHTML = '';
-      Array.from(photosInput.files).forEach(f => {
-        const d = document.createElement('div');
-        d.className='photo-item';
-        d.textContent=`📎 ${f.name} (${(f.size/1024/1024).toFixed(2)} MB)`;
-        photoList.appendChild(d);
-      });
-    });
-  }
-
-  // Galería img_home/
-  const grid    = document.getElementById('galleryGrid');
-  const lb      = document.getElementById('lightbox');
-  const lbImg   = document.getElementById('lightboxImage');
+  // ── Galería: cargar imágenes desde img_home/ ────────────────────────────────
+  const grid = document.getElementById('galleryGrid');
+  const lb   = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightboxImage');
   const lbClose = document.getElementById('lightboxClose');
 
+  // Extensiones de imagen comunes
+  const IMG_EXTS = ['jpg','jpeg','png','webp','gif','bmp','avif'];
+
+  // Intentamos cargar imágenes numeradas (img_home/1.jpg … img_home/99.jpg)
+  // y también nombres descriptivos habituales.
+  // Como estamos en web estática, generamos rutas y las probamos con onerror.
   if (grid) {
+    grid.innerHTML = ''; // limpiar lo que ponga el JS externo
+
+    // Genera candidatos: img_home/1.jpg … img_home/30.jpg para cada ext
     const candidates = [];
-    for (let i=1;i<=40;i++) ['jpg','jpeg','png','webp'].forEach(e=>candidates.push(`img_home/${i}.${e}`));
-    let any = false;
+    for (let i = 1; i <= 30; i++) {
+      IMG_EXTS.forEach(ext => candidates.push(`img_home/${i}.${ext}`));
+    }
+
+    let loaded = 0;
     candidates.forEach(src => {
-      const p = new Image();
-      p.onload = () => {
-        if (!any) { grid.innerHTML=''; any=true; }
+      const probe = new Image();
+      probe.onload = () => {
+        loaded++;
         const item = document.createElement('div');
         item.className = 'gallery-item';
         const img = document.createElement('img');
-        img.src=src; img.alt='Trabajo realizado'; img.loading='lazy';
+        img.src = src;
+        img.alt = `Trabajo realizado ${loaded}`;
+        img.loading = 'lazy';
         img.addEventListener('click', () => {
-          lbImg.src=src; lbImg.alt=img.alt;
+          lbImg.src = src;
+          lbImg.alt = img.alt;
           lb.classList.add('is-open');
-          lb.setAttribute('aria-hidden','false');
+          lb.setAttribute('aria-hidden', 'false');
           document.body.classList.add('modal-open');
         });
         item.appendChild(img);
         grid.appendChild(item);
       };
-      p.src=src;
+      probe.src = src;
     });
   }
 
   if (lbClose && lb) {
-    const close = () => { lb.classList.remove('is-open'); lb.setAttribute('aria-hidden','true'); document.body.classList.remove('modal-open'); };
-    lbClose.addEventListener('click', close);
-    lb.addEventListener('click', e => { if(e.target===lb) close(); });
-    document.addEventListener('keydown', e => { if(e.key==='Escape') close(); });
+    lbClose.addEventListener('click', () => {
+      lb.classList.remove('is-open');
+      lb.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+    });
+    lb.addEventListener('click', e => {
+      if (e.target === lb) lbClose.click();
+    });
   }
 });
 </script>
