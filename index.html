@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -344,21 +344,7 @@ body.modal-open{overflow:hidden}
       <p class="sec-sub">Opiniones reales. Deja la tuya si ya trabajaste con nosotros.</p>
     </div>
     <div class="reviews-grid" id="reviewsGrid">
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Pintaron todo el piso en dos días y quedó perfecto. Muy limpios, puntuales y el precio muy ajustado. Sin duda repito."</p>
-        <div class="review-author"><div class="review-avatar">MG</div><div><div class="review-name">María G.</div><div class="review-city">Gijón · Pintura interior</div></div></div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Llevábamos años buscando alguien de confianza para la fachada de la comunidad. El resultado fue espectacular y el trato muy profesional."</p>
-        <div class="review-author"><div class="review-avatar">CR</div><div><div class="review-name">Carlos R.</div><div class="review-city">Oviedo · Fachada comunidad</div></div></div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Reforma completa del local incluyendo pladur y suelo nuevo. Cumplieron los plazos y el acabado es de primera. Muy recomendables."</p>
-        <div class="review-author"><div class="review-avatar">LP</div><div><div class="review-name">Laura P.</div><div class="review-city">Avilés · Reforma local</div></div></div>
-      </div>
+      <!-- Las reseñas se cargan dinámicamente ordenadas de mayor a menor estrella -->
     </div>
     <div class="review-form-wrap">
       <button class="review-toggle-btn" id="reviewToggleBtn" type="button">✍️ Dejar mi reseña</button>
@@ -789,16 +775,36 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // --- Sistema de resenas ---
-  var STORAGE_KEY = 'pintama_reviews';
+  // --- Sistema de reseñas con memoria compartida (pre-fijadas + localStorage) ---
+  var STORAGE_KEY = 'pintama_reviews_v2';
+  var REVIEWS_LIMIT = 30; // máximo total
   var selectedStars = 0;
-  function loadReviews() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch(e) { return []; } }
-  function saveReviews(arr) { localStorage.setItem(STORAGE_KEY, JSON.stringify(arr)); }
+
+  // Reseñas pre-fijadas: siempre visibles desde cualquier dispositivo
+  var PINNED_REVIEWS = [
+    { name:'María G.', city:'Gijón · Pintura interior', stars:5, text:'Pintaron todo el piso en dos días y quedó perfecto. Muy limpios, puntuales y el precio muy ajustado. Sin duda repito.', pinned:true },
+    { name:'Carlos R.', city:'Oviedo · Fachada comunidad', stars:5, text:'Llevábamos años buscando alguien de confianza para la fachada de la comunidad. El resultado fue espectacular y el trato muy profesional.', pinned:true },
+    { name:'Laura P.', city:'Avilés · Reforma local', stars:5, text:'Reforma completa del local incluyendo pladur y suelo nuevo. Cumplieron los plazos y el acabado es de primera. Muy recomendables.', pinned:true }
+  ];
+
+  function loadLocalReviews() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch(e) { return []; } }
+  function saveLocalReviews(arr) {
+    // guardar solo las no-pinned, máx 27 extra
+    var limit = REVIEWS_LIMIT - PINNED_REVIEWS.length;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(arr.slice(-limit)));
+  }
+  function getAllReviews() {
+    var local = loadLocalReviews();
+    // combinar y ordenar de mayor a menor estrellas
+    var all = PINNED_REVIEWS.concat(local);
+    all.sort(function(a,b){ return b.stars - a.stars; });
+    return all;
+  }
   function starsStr(n) { var s=''; for(var i=1;i<=5;i++) s += i<=n ? '★' : '☆'; return s; }
   function initials(name) {
     return name.trim().split(' ').map(function(w){ return w[0]; }).join('').toUpperCase().slice(0,2);
   }
-  function renderReview(r, g) {
+  function buildReviewCard(r) {
     var card = document.createElement('div');
     card.className = 'review-card';
     var stars = document.createElement('div'); stars.className='review-stars'; stars.textContent=starsStr(r.stars);
@@ -811,7 +817,12 @@ window.addEventListener('DOMContentLoaded', function() {
     if (r.city) { var cy=document.createElement('div'); cy.className='review-city'; cy.textContent=r.city; info.appendChild(cy); }
     auth.appendChild(av); auth.appendChild(info);
     card.appendChild(stars); card.appendChild(text); card.appendChild(auth);
-    g.appendChild(card);
+    return card;
+  }
+  function renderAllReviews() {
+    if (!rGrid) return;
+    rGrid.innerHTML = '';
+    getAllReviews().forEach(function(r){ rGrid.appendChild(buildReviewCard(r)); });
   }
 
   var rGrid = document.getElementById('reviewsGrid');
@@ -825,16 +836,16 @@ window.addEventListener('DOMContentLoaded', function() {
   var rCity = document.getElementById('reviewCity');
   var rText = document.getElementById('reviewText');
 
-  if (rGrid) loadReviews().forEach(function(r){ renderReview(r, rGrid); });
+  renderAllReviews();
 
   if (toggleBtn) toggleBtn.addEventListener('click', function() {
     var open = formBox.style.display === 'block';
     formBox.style.display = open ? 'none' : 'block';
-    toggleBtn.textContent = open ? '✍ Dejar mi resena' : '✕ Cerrar';
+    toggleBtn.textContent = open ? '✍️ Dejar mi reseña' : '✕ Cerrar';
   });
   if (cancelBtn) cancelBtn.addEventListener('click', function() {
     formBox.style.display = 'none';
-    toggleBtn.textContent = '✍ Dejar mi resena';
+    toggleBtn.textContent = '✍️ Dejar mi reseña';
   });
 
   if (starPicker) {
@@ -859,16 +870,129 @@ window.addEventListener('DOMContentLoaded', function() {
     var text = rText.value.trim();
     var city = rCity.value.trim();
     if (!name) { rNote.textContent='Escribe tu nombre.'; rNote.className='review-form-note err'; return; }
-    if (!selectedStars) { rNote.textContent='Selecciona una puntuacion.'; rNote.className='review-form-note err'; return; }
+    if (!selectedStars) { rNote.textContent='Selecciona una puntuación.'; rNote.className='review-form-note err'; return; }
     if (!text) { rNote.textContent='Escribe tu comentario.'; rNote.className='review-form-note err'; return; }
     var rev = { name:name, city:city, stars:selectedStars, text:text };
-    var all = loadReviews(); all.push(rev); saveReviews(all);
-    renderReview(rev, rGrid);
+    var local = loadLocalReviews(); local.push(rev); saveLocalReviews(local);
+    renderAllReviews();
     rName.value=''; rCity.value=''; rText.value='';
     selectedStars=0;
-    starPicker.querySelectorAll('.star-btn').forEach(function(b){ b.classList.remove('lit'); b.style.color=''; });
-    rNote.textContent='Gracias por tu resena!'; rNote.className='review-form-note ok';
-    setTimeout(function(){ formBox.style.display='none'; toggleBtn.textContent='✍ Dejar mi resena'; rNote.textContent=''; }, 2500);
+    if (starPicker) starPicker.querySelectorAll('.star-btn').forEach(function(b){ b.classList.remove('lit'); b.style.color=''; });
+    rNote.textContent='¡Gracias por tu reseña! Ya aparece en la lista.'; rNote.className='review-form-note ok';
+    setTimeout(function(){ formBox.style.display='none'; toggleBtn.textContent='✍️ Dejar mi reseña'; rNote.textContent=''; }, 2800);
+  });
+
+  // --- Envío del formulario de presupuesto ---
+  function collectFormData() {
+    var name     = (document.getElementById('clientName')        || {}).value || '';
+    var email    = (document.getElementById('clientEmail')       || {}).value || '';
+    var phone    = (document.getElementById('clientPhone')       || {}).value || '';
+    var address  = (document.getElementById('projectAddress')    || {}).value || '';
+    var city     = (document.getElementById('projectCity')       || {}).value || '';
+    var zip      = (document.getElementById('projectZip')        || {}).value || '';
+    var dateVal  = (document.getElementById('projectDate')       || {}).value || '';
+    var propType = (document.getElementById('projectPropertyType')|| {}).value || '';
+    var priority = (document.getElementById('projectPriority')   || {}).value || '';
+    var desc     = (document.getElementById('projectDescription') || {}).value || '';
+    var notes    = (document.getElementById('projectExtraNotes') || {}).value || '';
+
+    // Recoger partidas
+    var rows = document.querySelectorAll('#itemsContainer .item-row');
+    var items = [];
+    rows.forEach(function(row) {
+      var sel  = row.querySelector('select');
+      var inp  = row.querySelectorAll('input');
+      var unitSel = row.querySelectorAll('select')[1];
+      var tipo = sel ? sel.value : '';
+      var detalleDesc = inp[0] ? inp[0].value : '';
+      var qty  = inp[1] ? inp[1].value : '';
+      var unit = unitSel ? unitSel.value : '';
+      var obs  = inp[2] ? inp[2].value : '';
+      if (tipo || detalleDesc) {
+        items.push({ tipo:tipo, desc:detalleDesc, qty:qty, unit:unit, obs:obs });
+      }
+    });
+    return { name, email, phone, address, city, zip, dateVal, propType, priority, desc, notes, items };
+  }
+
+  function validateForm(d) {
+    if (!d.name.trim()) return 'Escribe tu nombre.';
+    if (!d.email.trim()) return 'Escribe tu email.';
+    if (!d.phone.trim()) return 'Escribe tu teléfono.';
+    if (!d.desc.trim()) return 'Escribe una descripción del trabajo.';
+    return null;
+  }
+
+  function buildMessage(d) {
+    var lines = [];
+    lines.push('🎨 SOLICITUD DE PRESUPUESTO — PintAma');
+    lines.push('');
+    lines.push('👤 DATOS DE CONTACTO');
+    lines.push('Nombre: ' + d.name);
+    lines.push('Email: '  + d.email);
+    lines.push('Teléfono: ' + d.phone);
+    lines.push('');
+    lines.push('📍 UBICACIÓN DEL TRABAJO');
+    if (d.address)  lines.push('Dirección: ' + d.address);
+    if (d.city)     lines.push('Población: ' + d.city);
+    if (d.zip)      lines.push('C.P.: ' + d.zip);
+    if (d.propType) lines.push('Tipo inmueble: ' + d.propType);
+    lines.push('');
+    lines.push('📋 DETALLES');
+    if (d.dateVal)  lines.push('Fecha estimada: ' + d.dateVal);
+    if (d.priority) lines.push('Prioridad: ' + d.priority);
+    lines.push('');
+    lines.push('📝 DESCRIPCIÓN');
+    lines.push(d.desc);
+    if (d.items.length) {
+      lines.push('');
+      lines.push('🔧 PARTIDAS');
+      d.items.forEach(function(it, i) {
+        var p = (i+1) + '. ';
+        if (it.tipo) p += it.tipo;
+        if (it.desc) p += ' — ' + it.desc;
+        if (it.qty)  p += ' | ' + it.qty + ' ' + it.unit;
+        if (it.obs)  p += ' | Obs: ' + it.obs;
+        lines.push(p);
+      });
+    }
+    if (d.notes) {
+      lines.push('');
+      lines.push('💬 NOTAS ADICIONALES');
+      lines.push(d.notes);
+    }
+    lines.push('');
+    lines.push('---');
+    lines.push('Enviado desde pintama-web');
+    return lines.join('\n');
+  }
+
+  var sendGmailBtn   = document.getElementById('sendGmailBtn');
+  var sendWaBtn      = document.getElementById('sendWhatsappBtn');
+  var quoteStatus    = document.getElementById('quoteStatus');
+
+  if (sendGmailBtn) sendGmailBtn.addEventListener('click', function() {
+    var d = collectFormData();
+    var err = validateForm(d);
+    if (err) { quoteStatus.textContent = '⚠️ ' + err; quoteStatus.className = 'quote-note error'; return; }
+    var subject = encodeURIComponent('Solicitud de presupuesto – ' + d.name);
+    var body = encodeURIComponent(buildMessage(d));
+    // mailto tiene límite ~2000 chars en algunos clientes; usamos el máximo posible
+    var mailto = 'mailto:pintamareformas@gmail.com?subject=' + subject + '&body=' + body;
+    quoteStatus.textContent = '✅ Abriendo tu cliente de correo…'; quoteStatus.className = 'quote-note success';
+    window.location.href = mailto;
+  });
+
+  if (sendWaBtn) sendWaBtn.addEventListener('click', function() {
+    var d = collectFormData();
+    var err = validateForm(d);
+    if (err) { quoteStatus.textContent = '⚠️ ' + err; quoteStatus.className = 'quote-note error'; return; }
+    var msg = buildMessage(d);
+    // WhatsApp admite hasta ~4096 chars; recortamos si hace falta
+    if (msg.length > 3800) msg = msg.slice(0, 3800) + '\n[…mensaje recortado por longitud]';
+    var url = 'https://wa.me/34631422335?text=' + encodeURIComponent(msg);
+    quoteStatus.textContent = '✅ Abriendo WhatsApp…'; quoteStatus.className = 'quote-note success';
+    window.open(url, '_blank', 'noopener');
   });
 
 });
