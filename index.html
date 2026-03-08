@@ -213,19 +213,67 @@ a{color:inherit;text-decoration:none}
   <div class="orbit-ring" style="width:560px;height:420px"></div>
   <div class="orbit-ring" style="width:830px;height:610px"></div>
 
-  <!-- Cards de obras — se cargan dinámicamente desde la carpeta obras/
-       Sube cualquier imagen con cualquier nombre a la carpeta obras/ y aparecerá automáticamente.
-       Formatos soportados: jpg, jpeg, png, gif, webp, avif, bmp, svg -->
-  <div id="c1"  class="img-card" data-label="Obra 1"  onclick="openLightbox(0)"><div class="img-placeholder" style="background:linear-gradient(135deg,#1a3a72,#2c6df2)">Obra 1</div><div class="zoom-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div><div class="card-label">Obra 1</div></div>
-  <div id="c2"  class="img-card" data-label="Obra 2"  onclick="openLightbox(1)"><div class="img-placeholder" style="background:linear-gradient(135deg,#0f2952,#1a4fad)">Obra 2</div><div class="zoom-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div><div class="card-label">Obra 2</div></div>
-  <div id="c3"  class="img-card" data-label="Obra 3"  onclick="openLightbox(2)"><div class="img-placeholder" style="background:linear-gradient(135deg,#b07020,#d4962c)">Obra 3</div><div class="zoom-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div><div class="card-label">Obra 3</div></div>
-  <div id="c4"  class="img-card" data-label="Obra 4"  onclick="openLightbox(3)"><div class="img-placeholder" style="background:linear-gradient(135deg,#1a3a72,#3d8eff)">Obra 4</div><div class="zoom-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div><div class="card-label">Obra 4</div></div>
-  <div id="c5"  class="img-card" data-label="Obra 5"  onclick="openLightbox(4)"><div class="img-placeholder" style="background:linear-gradient(135deg,#0d1e35,#2c6df2)">Obra 5</div><div class="zoom-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div><div class="card-label">Obra 5</div></div>
-  <div id="c6"  class="img-card" data-label="Obra 6"  onclick="openLightbox(5)"><div class="img-placeholder" style="background:linear-gradient(135deg,#c9922a,#f0c06a)">Obra 6</div><div class="zoom-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div><div class="card-label">Obra 6</div></div>
-  <div id="c7"  class="img-card" data-label="Obra 7"  onclick="openLightbox(6)"><div class="img-placeholder" style="background:linear-gradient(135deg,#1a4fad,#7baeff)">Obra 7</div><div class="zoom-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div><div class="card-label">Obra 7</div></div>
-  <div id="c8"  class="img-card" data-label="Obra 8"  onclick="openLightbox(7)"><div class="img-placeholder" style="background:linear-gradient(135deg,#0f2952,#c9922a)">Obra 8</div><div class="zoom-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div><div class="card-label">Obra 8</div></div>
-  <div id="c9"  class="img-card" data-label="Obra 9"  onclick="openLightbox(8)"><div class="img-placeholder" style="background:linear-gradient(135deg,#2c6df2,#0d1e35)">Obra 9</div><div class="zoom-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div><div class="card-label">Obra 9</div></div>
-  <div id="c10" class="img-card" data-label="Obra 10" onclick="openLightbox(9)"><div class="img-placeholder" style="background:linear-gradient(135deg,#d4962c,#1a3a72)">Obra 10</div><div class="zoom-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div><div class="card-label">Obra 10</div></div>
+  <!-- Cards de obras: pon tus fotos en carpeta obras/ con nombres obra1.jpg, obra2.jpg… -->
+  <div class="img-card" id="c1"  data-src="obras/obra1.jpg"  data-label="Obra 1"  onclick="openLightbox(0)">
+    <img src="obras/obra1.jpg"  alt="Obra 1"  onerror="this.style.display='none'">
+    <div class="img-placeholder" style="background:linear-gradient(135deg,#1a3a72,#2c6df2)">Obra 1</div>
+    <div class="zoom-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+    <div class="card-label">Obra 1</div>
+  </div>
+  <div class="img-card" id="c2"  data-src="obras/obra2.jpg"  data-label="Obra 2"  onclick="openLightbox(1)">
+    <img src="obras/obra2.jpg"  alt="Obra 2"  onerror="this.style.display='none'">
+    <div class="img-placeholder" style="background:linear-gradient(135deg,#0f2952,#1a4fad)">Obra 2</div>
+    <div class="zoom-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+    <div class="card-label">Obra 2</div>
+  </div>
+  <div class="img-card" id="c3"  data-src="obras/obra3.jpg"  data-label="Obra 3"  onclick="openLightbox(2)">
+    <img src="obras/obra3.jpg"  alt="Obra 3"  onerror="this.style.display='none'">
+    <div class="img-placeholder" style="background:linear-gradient(135deg,#b07020,#d4962c)">Obra 3</div>
+    <div class="zoom-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+    <div class="card-label">Obra 3</div>
+  </div>
+  <div class="img-card" id="c4"  data-src="obras/obra4.jpg"  data-label="Obra 4"  onclick="openLightbox(3)">
+    <img src="obras/obra4.jpg"  alt="Obra 4"  onerror="this.style.display='none'">
+    <div class="img-placeholder" style="background:linear-gradient(135deg,#1a3a72,#3d8eff)">Obra 4</div>
+    <div class="zoom-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+    <div class="card-label">Obra 4</div>
+  </div>
+  <div class="img-card" id="c5"  data-src="obras/obra5.jpg"  data-label="Obra 5"  onclick="openLightbox(4)">
+    <img src="obras/obra5.jpg"  alt="Obra 5"  onerror="this.style.display='none'">
+    <div class="img-placeholder" style="background:linear-gradient(135deg,#0d1e35,#2c6df2)">Obra 5</div>
+    <div class="zoom-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+    <div class="card-label">Obra 5</div>
+  </div>
+  <div class="img-card" id="c6"  data-src="obras/obra6.jpg"  data-label="Obra 6"  onclick="openLightbox(5)">
+    <img src="obras/obra6.jpg"  alt="Obra 6"  onerror="this.style.display='none'">
+    <div class="img-placeholder" style="background:linear-gradient(135deg,#c9922a,#f0c06a)">Obra 6</div>
+    <div class="zoom-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+    <div class="card-label">Obra 6</div>
+  </div>
+  <div class="img-card" id="c7"  data-src="obras/obra7.jpg"  data-label="Obra 7"  onclick="openLightbox(6)">
+    <img src="obras/obra7.jpg"  alt="Obra 7"  onerror="this.style.display='none'">
+    <div class="img-placeholder" style="background:linear-gradient(135deg,#1a4fad,#7baeff)">Obra 7</div>
+    <div class="zoom-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+    <div class="card-label">Obra 7</div>
+  </div>
+  <div class="img-card" id="c8"  data-src="obras/obra8.jpg"  data-label="Obra 8"  onclick="openLightbox(7)">
+    <img src="obras/obra8.jpg"  alt="Obra 8"  onerror="this.style.display='none'">
+    <div class="img-placeholder" style="background:linear-gradient(135deg,#0f2952,#c9922a)">Obra 8</div>
+    <div class="zoom-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+    <div class="card-label">Obra 8</div>
+  </div>
+  <div class="img-card" id="c9"  data-src="obras/obra9.jpg"  data-label="Obra 9"  onclick="openLightbox(8)">
+    <img src="obras/obra9.jpg"  alt="Obra 9"  onerror="this.style.display='none'">
+    <div class="img-placeholder" style="background:linear-gradient(135deg,#2c6df2,#0d1e35)">Obra 9</div>
+    <div class="zoom-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+    <div class="card-label">Obra 9</div>
+  </div>
+  <div class="img-card" id="c10" data-src="obras/obra10.jpg" data-label="Obra 10" onclick="openLightbox(9)">
+    <img src="obras/obra10.jpg" alt="Obra 10" onerror="this.style.display='none'">
+    <div class="img-placeholder" style="background:linear-gradient(135deg,#d4962c,#1a3a72)">Obra 10</div>
+    <div class="zoom-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+    <div class="card-label">Obra 10</div>
+  </div>
 
   <!-- Logo central -->
   <div class="center-logo">
@@ -312,100 +360,27 @@ a{color:inherit;text-decoration:none}
 </main>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ── Carga dinámica de imágenes desde carpeta obras/ ──────────────────────────
-// Acepta cualquier nombre de archivo y cualquier formato de imagen.
-// Prueba extensiones comunes en orden. Si el servidor devuelve 200 → muestra la imagen.
 (function(){
-  var CARD_IDS = ['c1','c2','c3','c4','c5','c6','c7','c8','c9','c10'];
-  var EXTS = ['jpg','jpeg','png','webp','avif','gif','bmp','svg'];
-
-  // Para GitHub Pages no hay listado de directorio.
-  // Estrategia: intentar cargar obras/1.ext, obras/2.ext… Y también
-  // nombres comunes: obra1, foto1, img1, image1, pintura1, reforma1, trabajo1.
-  // El usuario puede nombrar sus fotos como quiera siempre que estén en obras/
-  var NAME_PATTERNS = [
-    function(n){ return 'obra'+n; },
-    function(n){ return 'foto'+n; },
-    function(n){ return 'img'+n; },
-    function(n){ return 'image'+n; },
-    function(n){ return 'pintura'+n; },
-    function(n){ return 'reforma'+n; },
-    function(n){ return 'trabajo'+n; },
-    function(n){ return ''+n; },
-    function(n){ return 'pic'+n; },
-    function(n){ return 'photo'+n; },
-  ];
-
-  // Intenta cargar una imagen probando todas las combinaciones nombre+ext
-  function tryLoad(card, slot, namePatterns, exts, done) {
-    var attempts = [];
-    namePatterns.forEach(function(pat){
-      exts.forEach(function(ext){
-        attempts.push('obras/' + pat(slot) + '.' + ext);
-      });
-    });
-    var i = 0;
-    function next() {
-      if (i >= attempts.length) { done(null); return; }
-      var src = attempts[i++];
-      var img = new Image();
-      img.onload = function(){ done(src); };
-      img.onerror = next;
-      img.src = src;
-    }
-    next();
-  }
-
-  var loadedSrcs = new Array(CARD_IDS.length).fill(null);
-
-  CARD_IDS.forEach(function(id, idx){
-    var card = document.getElementById(id);
-    if (!card) return;
-    tryLoad(card, idx + 1, NAME_PATTERNS, EXTS, function(src){
-      if (!src) return; // sin imagen: se queda el placeholder
-      loadedSrcs[idx] = src;
-      // Insertar imagen antes del placeholder
-      var img = document.createElement('img');
-      img.src = src;
-      img.alt = card.dataset.label || ('Obra ' + (idx+1));
-      img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease';
-      card.insertBefore(img, card.firstChild);
-      // Efecto hover zoom
-      card.addEventListener('mouseenter', function(){ img.style.transform='scale(1.07)'; });
-      card.addEventListener('mouseleave', function(){ img.style.transform='scale(1)'; });
-      // Actualizar label
-      var lbl = card.querySelector('.card-label');
-      if (lbl) lbl.textContent = card.dataset.label || img.alt;
-    });
-  });
-
   // ── Lightbox ──────────────────────────────────────────────────────────────
-  var lbOpen = false;
+  var cards = Array.from(document.querySelectorAll('.img-card'));
   var cur = 0;
+  var lbOpen = false;
 
-  function getImgData() {
-    return CARD_IDS.map(function(id, i){
-      var card = document.getElementById(id);
-      return {
-        src: loadedSrcs[i],
-        label: card ? (card.dataset.label || ('Obra '+(i+1))) : ('Obra '+(i+1))
-      };
-    });
+  function getSrc(card) {
+    var img = card.querySelector('img');
+    // Si la imagen cargó correctamente su naturalWidth > 0
+    if (img && img.naturalWidth > 0) return img.src;
+    // Fallback: usar data-src
+    return card.dataset.src || null;
   }
 
   window.openLightbox = function(i) {
-    var data = getImgData();
     cur = i;
-    var item = data[i];
-    if (!item || !item.src) {
-      // Sin imagen: buscar la siguiente con imagen
-      for (var k=0; k<data.length; k++) {
-        if (data[k].src) { cur=k; item=data[k]; break; }
-      }
-      if (!item || !item.src) return;
-    }
-    document.getElementById('lb-img').src = item.src;
-    document.getElementById('lb-label').textContent = item.label;
+    var card = cards[i];
+    var src = getSrc(card);
+    if (!src) return;
+    document.getElementById('lb-img').src = src;
+    document.getElementById('lb-label').textContent = card.dataset.label || ('Obra ' + (i+1));
     document.getElementById('lightbox').classList.add('open');
     document.body.style.overflow = 'hidden';
     lbOpen = true;
@@ -418,24 +393,28 @@ a{color:inherit;text-decoration:none}
   };
 
   window.navLightbox = function(d) {
-    var data = getImgData();
+    var next = (cur + d + cards.length) % cards.length;
     var tries = 0;
-    do {
-      cur = (cur + d + data.length) % data.length;
+    while (tries < cards.length) {
+      var src = getSrc(cards[next]);
+      if (src) { cur = next; break; }
+      next = (next + d + cards.length) % cards.length;
       tries++;
-    } while (!data[cur].src && tries < data.length);
-    if (data[cur].src) {
-      document.getElementById('lb-img').src = data[cur].src;
-      document.getElementById('lb-label').textContent = data[cur].label;
+    }
+    var src = getSrc(cards[cur]);
+    if (src) {
+      document.getElementById('lb-img').src = src;
+      document.getElementById('lb-label').textContent = cards[cur].dataset.label || ('Obra ' + (cur+1));
     }
   };
 
   document.addEventListener('keydown', function(e){
     if (!lbOpen) return;
-    if (e.key === 'Escape') window.closeLightbox();
-    if (e.key === 'ArrowLeft')  window.navLightbox(-1);
-    if (e.key === 'ArrowRight') window.navLightbox(1);
+    if (e.key === 'Escape')      window.closeLightbox();
+    if (e.key === 'ArrowLeft')   window.navLightbox(-1);
+    if (e.key === 'ArrowRight')  window.navLightbox(1);
   });
-})();</script>
+})();
+</script>
 </body>
 </html>
